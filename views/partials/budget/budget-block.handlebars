@@ -1,9 +1,9 @@
 <li>
-	{{name}}
-
-	<button class="change-expense" data-id="{{id}}" data-newExpense="{{expense}}">
-		{{#if expense}}Expense{{else}}Income{{/if}}
-	</button>
-	
+	{{name}}  :
+${{amount}}
+<!--	<button class="change-expense" data-id="{{id}}" data-newExpense="{{expense}}">
+		{{#if expense}}{{else}}Income{{/if}}
+	</button> -->
+	<input type="number" data-id="{{this.id}}">
 	<button class="delete-expense" data-id="{{this.id}}">Delete!</button>
 </li>
