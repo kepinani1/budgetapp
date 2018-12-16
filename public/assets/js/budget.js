@@ -27,9 +27,7 @@ $(function() {
 
     var newLine = {
       name: $("#ca").val().trim(),
-      expense: $("[name=expense]:checked").val(),
-      income: $("#income").val(),
-      amount: $("#amount").val(),
+      expense: $("[name=expense]:checked").val().trim()
     };
 
     // Send the POST request.

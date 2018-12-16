@@ -1,10 +1,9 @@
-INSERT INTO budget (name, income, amount) VALUES ('Monthly Paycheck', true, 1750.00);
-INSERT INTO budget (name, income, amount) VALUES ('Savings', true, 250.00);
-INSERT INTO budget (name, expense, amount) VALUES ('Loan', true, 1200.00);
-INSERT INTO budget (name, expense, amount) VALUES ('Rent', true, 1590.00);
-INSERT INTO budget (name, expense, amount) VALUES ('Groceries', true, 125.00);
-INSERT INTO budget (name, income, amount) VALUES ('Salary', true, 2250.00);
-INSERT INTO budget (name, income, amount) VALUES ('Investment', true, 240.00);
-INSERT INTO budget (name, income, amount) VALUES ('Other', true, 100.00);
-SELECT SUM(income - expense) AS "Net Income"
-FROM budget;
+INSERT INTO budget (name) VALUES ('Monthly Paycheck');
+INSERT INTO budget (name) VALUES ('Savings');
+INSERT INTO budget (name, expense) VALUES ('Loan', true);
+INSERT INTO budget (name, expense) VALUES ('Rent', true);
+INSERT INTO budget (name, expense) VALUES ('Groceries', true);
+INSERT INTO budget (name, income) VALUES ('Salary', true);
+INSERT INTO budget (name, income) VALUES ('Investment', true);
+INSERT INTO budget (name, income) VALUES ('Other', true);
+INSERT INTO budget (name) VALUES ('Total');

@@ -9,6 +9,5 @@ CREATE TABLE budget
 	name varchar(255) NOT NULL,
 	expense BOOLEAN DEFAULT false,
 	income BOOLEAN DEFAULT false,
-	amount DECIMAL(10,2) NOT NULL,
 	PRIMARY KEY (id)
 );
