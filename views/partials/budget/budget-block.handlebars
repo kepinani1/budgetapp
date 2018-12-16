@@ -1,13 +1,9 @@
 <li>
 	{{name}}
-	{{amount}}
 
-  <div class="form-group">
-    <label for="chgAmount">Amount:</label>
-    <input type="text" id="chgAmount" name="amount">
+	<button class="change-expense" data-id="{{id}}" data-newexpense="{{expense}}">
+		{{#if expense}}Expense{{else}}Income{{/if}}
+	</button>
 
-	<button class="amount" data-id="{{this.id}}">Update Amount!</button>
 	<button class="delete-expense" data-id="{{this.id}}">Delete!</button>
-  </div>
-
 </li>

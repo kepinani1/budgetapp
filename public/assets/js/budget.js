@@ -1,51 +1,20 @@
 // Make sure we wait to attach our handlers until the DOM is fully loaded.
 $(function() {
-  // $(".change-expense").on("click", function(event) {
-  //   var id = $(this).data("id");
-  //   var newExpense = $(this).data("newExpense");
-
-  //   var newExpenseState = {
-  //     expense: newExpense
-  //   };
-
-  //   // Send the PUT request.
-  //   $.ajax("/api/budget/" + id, {
-  //     type: "PUT",
-  //     data: newExpenseState
-  //   }).then(
-  //     function() {
-  //       console.log("changed expense to", newExpense);
-  //       // Reload the page to get the updated list
-  //       location.reload();
-  //     }
-  //   );
-  // });
-
-  $(".amount").on("click", function(event) {
-
+  $(".change-expense").on("click", function(event) {
     var id = $(this).data("id");
+    var newExpense = $(this).data("newExpense");
 
-    console.log("Hello world")
-
-    var amt = $("#chgAmount").val();
-  
-    console.log("amt: " + $("#chgAmount").val());
-
-    // var chgAmount = $("#chgAmount").val();
-
-    console.log(chgAmount);
-
-    var chgAmount = {
-      amount: $("#chgAmount").val()
+    var newExpenseState = {
+      expense: newExpense
     };
 
     // Send the PUT request.
     $.ajax("/api/budget/" + id, {
       type: "PUT",
-      data: $("#chgAmount").val()
+      data: newExpenseState
     }).then(
       function() {
-        console.log("changed expense to", chgAmount);
+        console.log("changed expense to", newExpense);
         // Reload the page to get the updated list
         location.reload();
       }
@@ -58,9 +27,7 @@ $(function() {
 
     var newLine = {
       name: $("#ca").val().trim(),
-      expense: $("#expense").val(),
-      income: $("#income").val(),
-      amount: $("#amount").val()
+      expense: $("[name=expense]:checked").val().trim()
     };
 
     // Send the POST request.

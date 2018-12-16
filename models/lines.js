@@ -1,10 +1,10 @@
 // Import the ORM to create functions that will interact with the database.
 var orm = require("../config/orm.js");
 
-var budget = {
+var expense = {
   all: function(cb) {
-    orm.all("budget", function(result) {
-      cb(result);
+    orm.all("budget", function(res) {
+      cb(res);
     });
   },
   // The variables cols and vals are arrays.
@@ -26,4 +26,4 @@ var budget = {
 };
 
 // Export the database functions for the controller (catsController.js).
-module.exports = budget;
+module.exports = expense;

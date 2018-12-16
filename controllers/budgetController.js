@@ -3,11 +3,11 @@ var express = require("express");
 var router = express.Router();
 
 // Import the model (budget.js) to use its database functions.
-var budget = require("../models/Budget.js");
+var line = require("../models/lines.js");
 
 // Create all our routes and set up logic within those routes where required.
 router.get("/", function(req, res) {
-  budget.all(function(data) {
+  line.all(function(data) {
     var hbsObject = {
       budget: data
     };
@@ -16,50 +16,38 @@ router.get("/", function(req, res) {
   });
 });
 
-router.post("/api/budget", function(req, res) {
-  budget.create([
-    "name", "expense", "income", "amount"
+router.post("/api/lines", function(req, res) {
+  line.create([
+    "name", "expense"
   ], [
-    req.body.name, req.body.expense, req.body.income, req.body.amount
+    req.body.name, req.body.expense
   ], function(result) {
     // Send back the ID of the new quote
     res.json({ id: result.insertId });
   });
 });
 
-router.put("/api/budget/:id", function(req, res) {
-  
-  
+router.put("/api/lines/:id", function(req, res) {
   var condition = "id = " + req.params.id;
 
-  var amt = parseInt(Object.keys(req.body));
+  console.log("condition", condition);
 
-  console.log("amt: " + JSON.stringify(amt));
-
-   console.log("condition", condition);
-
-  budget.update(
-    {
-    //  expense: req.body.expense,
-    amount: amt
-  },
-    condition, 
-    function(result) {
-    
-      if (result.changedRows == 0) {
+  line.update({
+    line: req.body.expense
+  }, condition, function(result) {
+    if (result.changedRows == 0) {
       // If no rows were changed, then the ID must not exist, so 404
       return res.status(404).end();
     } else {
       res.status(200).end();
     }
-    }
-  );
+  });
 });
 
-router.delete("/api/budget/:id", function(req, res) {
+router.delete("/api/lines/:id", function(req, res) {
   var condition = "id = " + req.params.id;
 
-  budget.delete(condition, function(result) {
+  line.delete(condition, function(result) {
     if (result.affectedRows == 0) {
       // If no rows were changed, then the ID must not exist, so 404
       return res.status(404).end();
@@ -68,8 +56,6 @@ router.delete("/api/budget/:id", function(req, res) {
     }
   });
 });
-
-
 
 // Export routes for server.js to use.
 module.exports = router;
